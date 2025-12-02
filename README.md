@@ -14,7 +14,7 @@ Lookey solves this by implementing **Invisible Frequency Watermarking (Steganogr
 
 ## Features
 
-*   **Deep Embed (Lookey Mark):** Uses **Discrete Wavelet Transforms (DWT)** to hide your identity hash inside the image frequency waves. This allows the signature to survive re-encoding, PNG->JPEG conversion, and compression.
+*   **Deep Embed (Lookey Mark):** Uses **Discrete Wavelet Transforms (DWT)** to hide your identity hash inside the image frequency waves. This allows the signature to survive re-encoding, PNG compression, and platform uploads that preserve PNG format. **Note: Conversion to JPEG will destroy the watermark.**
 *   **Standard Sign:** Injects a standard cryptographic signature into the file metadata (EXIF or PNG Chunks).
 *   **Adaptive Logic:** Lookey analyzes the image texture before signing.
     *   *Photos/Complex UI/Colorful artwork/images with big color variety:* Signed invisibly using DWT.
