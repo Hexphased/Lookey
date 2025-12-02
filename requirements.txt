@@ -1,0 +1,9 @@
+colorama>=0.4.0
+cryptography>=41.0.0
+customtkinter>=5.0.0
+invisible-watermark>=0.2.0
+numpy>=1.24.0
+opencv-python-headless>=4.8.0
+piexif>=1.1.0
+Pillow>=10.0.0
+qrcode>=8.0
