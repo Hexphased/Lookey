@@ -100,7 +100,7 @@ Lookey cannot stop people from right-clicking. It **can** provide indisputable m
 ## Installation
 
 ### Option A: The Binary (Windows)
-Download the latest `Lookey.exe` from the **[Releases Page]**. No Python required. Just unzip and run.
+Download the latest `Lookey.exe` from the **[Releases Page](https://github.com/Hexphased/Lookey/releases/latest)**. No Python required. Just unzip and run.
 
 ### Option B: Run from Source (Python)
 Requirements: Python 3.10+
