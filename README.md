@@ -134,6 +134,17 @@ Requirements: Python 3.10+
 
 In the `assets` folder of this repository, you will find the Lookey icon (logo.png), and an additional `BeautifulAurora.png` image. These are signed by the creator (Hexicon), and can be freely downloaded to test the application's functionality.
 
+To verify them as **Trusted**, add my identity to your contact list using this Invite Code:
+```
+eyJ2IjogMSwgIm5hbWUiOiAiSGV4aWNvbiIsICJrZXkiOiAiTFMwdExTMUNSVWRKVGlCUVZVSk1TVU1nUzBWWkxTMHRMUzBLVFVOdmQwSlJXVVJMTWxaM1FYbEZRUzlOUjNSMWFERXlaVmhqWjNKbldYaHRRbkoyTW5WQ1RrdzNTSEZsVVhOWU9ITXpTSHBhT1hGWk4xazlDaTB0TFMwdFJVNUVJRkJWUWt4SlF5QkxSVmt0TFMwdExRbz0ifQ==
+```
+
+Using the CLI version:
+`lookey_cli add-contact <INVITE CODE HERE>`
+
+Or the GUI version:
+`Open the app > click "Add Contact" > Paste the invite code and confirm`
+
 ---
 
 ## The Network Effect
