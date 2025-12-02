@@ -75,16 +75,16 @@ How Lookey protects creators in adversarial situations. Involving Alice (Creator
 ### Scenario 1: The "Smear Campaign" (Tampering)
 Bob downloads Alice's signed art from Twitter (where metadata is stripped), adds offensive text, and reposts it to frame her.
 *   **Lookey verification:** **Source Confirmed - Alice** (It confirms Alice created the base canvas).
-*   **Defense:** Alice produces her Original File (hosted on GitHub/Drive). It displays **Verified Authentic**.
+*   **Defense:** Alice produces her Originally-signed File (hosted on GitHub/Drive). It displays **Verified Authentic**.
 
 Since Bob cannot produce a **Verified** version of his offensive edit (he lacks Alice's private key to sign the new pixels), the offensive image is proven to be a modified fork with broken integrity. Lookey proves Alice made the original, not the edit.
 
 ### Scenario 2: The "Repost" (Theft)
-Bob downloads Alice's art from Twitter (where metadata is stripped) and posts it on Reddit claiming it is his.
+Bob downloads Alice's art from Discord (where metadata is stripped, but Lookey Mark remains) and posts it on Reddit claiming it is his.
 The **Deep Embed** (Lookey Mark) survives the platform transition.
 *   **Lookey Verification:** **Source Confirmed - Alice.**
 
-Anyone verifying Bob's post will see Alice's name embedded in the image frequencies. Bob cannot remove this without destroying the image quality.
+Anyone verifying Bob's post will see Alice's name embedded in the image frequencies. Bob cannot remove this without re-signing the image with his own key, which will overwrite the original timestamp.
 
 ### Scenario 3: The "Squatter" (Time Paradox)
 Alice posts an **unsigned** image. Bob downloads it, signs it with *his* Lookey Key, and claims he is the original creator.
