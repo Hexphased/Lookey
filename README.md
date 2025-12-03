@@ -1,5 +1,5 @@
 # Lookey
-The Official Implementation of the CIVCOCTAIL Protocol
+The Official Implementation of the [CIVCOCTAIL Protocol](https://github.com/Hexphased/PROTOCOL.md)
 (Cryptographic Image Verification, Chain Of Custody, Timestamping And Identity Ledger)
 
 ![Lookey Logo](assets/logo.png)
