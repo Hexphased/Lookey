@@ -315,16 +315,26 @@ class LookeyBackend:
             save_dir = os.path.join(parent_dir, "Lookey_Marked")
             os.makedirs(save_dir, exist_ok=True)
             output_path = os.path.join(save_dir, name_only + ".png")
+
+            gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
             
             (mean, std_dev) = cv2.meanStdDev(bgr)
             avg_std = sum(std_dev) / len(std_dev)
             
+            void_pixels = np.sum((gray < 10) | (gray > 245))
+            void_ratio = void_pixels / gray.size
+            
             strategies = []
+            
             strategies.append((0, 36))
             strategies.append((0, 60))
-            strategies.append((2, 50))
-            if avg_std < 20:
-                strategies.append((4, 90))
+            
+            if self._is_safe_for_noise(bgr):
+                strategies.append((2, 50))
+                
+                (mean, global_std) = cv2.meanStdDev(bgr)
+                if sum(global_std)/3 < 20:
+                    strategies.append((4, 90))
             
             spy_success = False
             final_bgr = None
@@ -450,6 +460,36 @@ class LookeyBackend:
         except Exception as e:
             pass
         return None
+        
+    def _is_safe_for_noise(self, bgr):
+    
+        h, w = bgr.shape[:2]
+        rows, cols = 4, 4
+        step_h, step_w = h // rows, w // cols
+        
+        risky_sectors = 0
+        total_sectors = rows * cols
+        
+        for r in range(rows):
+            for c in range(cols):
+                y1, y2 = r * step_h, (r + 1) * step_h
+                x1, x2 = c * step_w, (c + 1) * step_w
+                
+                sector = bgr[y1:y2, x1:x2]
+                gray_sec = cv2.cvtColor(sector, cv2.COLOR_BGR2GRAY)
+                
+                (mean, std_dev) = cv2.meanStdDev(sector)
+                avg_std = sum(std_dev) / len(std_dev)
+                
+                avg_bright = np.mean(gray_sec)
+                
+                if avg_bright < 60 and avg_std < 20:
+                    risky_sectors += 1
+        
+        if risky_sectors > (total_sectors * 0.25):
+            return False
+            
+        return True
         
     def _hamming_distance(self, s1, s2):
         if len(s1) != len(s2): return 999
