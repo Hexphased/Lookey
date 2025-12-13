@@ -1,5 +1,5 @@
 # Lookey
-The Official Implementation of the CIVCOCTAIL Protocol
+The Official Implementation of the [CIVCOCTAIL Protocol](PROTOCOL.md)
 (Cryptographic Image Verification, Chain Of Custody, Timestamping And Identity Ledger)
 
 ![Lookey Logo](assets/logo.png)
@@ -14,7 +14,7 @@ Lookey solves this by implementing **Invisible Frequency Watermarking (Steganogr
 
 ## Features
 
-*   **Deep Embed (Lookey Mark):** Uses **Discrete Wavelet Transforms (DWT)** to hide your identity hash inside the image frequency waves. This allows the signature to survive re-encoding, PNG->JPEG conversion, and compression.
+*   **Deep Embed (Lookey Mark):** Uses **Discrete Wavelet Transforms (DWT)** to hide your identity hash inside the image frequency waves. This allows the signature to survive re-encoding, PNG compression, and platform uploads that preserve PNG format. **Note: Conversion to JPEG will destroy the watermark.**
 *   **Standard Sign:** Injects a standard cryptographic signature into the file metadata (EXIF or PNG Chunks).
 *   **Adaptive Logic:** Lookey analyzes the image texture before signing.
     *   *Photos/Complex UI/Colorful artwork/images with big color variety:* Signed invisibly using DWT.
@@ -75,16 +75,16 @@ How Lookey protects creators in adversarial situations. Involving Alice (Creator
 ### Scenario 1: The "Smear Campaign" (Tampering)
 Bob downloads Alice's signed art from Twitter (where metadata is stripped), adds offensive text, and reposts it to frame her.
 *   **Lookey verification:** **Source Confirmed - Alice** (It confirms Alice created the base canvas).
-*   **Defense:** Alice produces her Original File (hosted on GitHub/Drive). It displays **Verified Authentic**.
+*   **Defense:** Alice produces her Originally-signed File (hosted on GitHub/Drive). It displays **Verified Authentic**.
 
 Since Bob cannot produce a **Verified** version of his offensive edit (he lacks Alice's private key to sign the new pixels), the offensive image is proven to be a modified fork with broken integrity. Lookey proves Alice made the original, not the edit.
 
 ### Scenario 2: The "Repost" (Theft)
-Bob downloads Alice's art from Twitter (where metadata is stripped) and posts it on Reddit claiming it is his.
+Bob downloads Alice's art from Discord (where metadata is stripped, but Lookey Mark remains) and posts it on Reddit claiming it is his.
 The **Deep Embed** (Lookey Mark) survives the platform transition.
 *   **Lookey Verification:** **Source Confirmed - Alice.**
 
-Anyone verifying Bob's post will see Alice's name embedded in the image frequencies. Bob cannot remove this without destroying the image quality.
+Anyone verifying Bob's post will see Alice's name embedded in the image frequencies. Bob cannot remove this without re-signing the image with his own key, which will overwrite the original timestamp.
 
 ### Scenario 3: The "Squatter" (Time Paradox)
 Alice posts an **unsigned** image. Bob downloads it, signs it with *his* Lookey Key, and claims he is the original creator.
@@ -100,7 +100,7 @@ Lookey cannot stop people from right-clicking. It **can** provide indisputable m
 ## Installation
 
 ### Option A: The Binary (Windows)
-Download the latest `Lookey.exe` from the **[Releases Page]**. No Python required. Just unzip and run.
+Download the latest `Lookey.exe` from the **[Releases Page](https://github.com/Hexphased/Lookey/releases/latest)**. No Python required. Just unzip and run.
 
 ### Option B: Run from Source (Python)
 Requirements: Python 3.10+
@@ -133,6 +133,17 @@ Requirements: Python 3.10+
 ## Try It Yourself
 
 In the `assets` folder of this repository, you will find the Lookey icon (logo.png), and an additional `BeautifulAurora.png` image. These are signed by the creator (Hexicon), and can be freely downloaded to test the application's functionality.
+
+To verify them as **Trusted**, add my identity to your contact list using this Invite Code:
+```
+eyJ2IjogMSwgIm5hbWUiOiAiSGV4aWNvbiIsICJrZXkiOiAiTFMwdExTMUNSVWRKVGlCUVZVSk1TVU1nUzBWWkxTMHRMUzBLVFVOdmQwSlJXVVJMTWxaM1FYbEZRUzlOUjNSMWFERXlaVmhqWjNKbldYaHRRbkoyTW5WQ1RrdzNTSEZsVVhOWU9ITXpTSHBhT1hGWk4xazlDaTB0TFMwdFJVNUVJRkJWUWt4SlF5QkxSVmt0TFMwdExRbz0ifQ==
+```
+
+Using the CLI version:
+`lookey_cli add-contact <INVITE CODE HERE>`
+
+Or the GUI version:
+`Open the app > click "Add Contact" > Paste the invite code and confirm`
 
 ---
 
